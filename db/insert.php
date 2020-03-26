@@ -3,7 +3,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $email = $_POST['email'];
 if (!empty($username) || !empty($password) || !empty($email)) {
-	$host = "https://srv-pleskdb23.ps.kz";
+	$host = "https://195.210.46.100";
 	$dbUsername = "rahme_login";
 	$dbPassword = "Kazakhstan01";
 	$dbname = "rahmetm1_login";
