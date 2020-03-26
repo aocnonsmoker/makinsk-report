@@ -3,9 +3,9 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $email = $_POST['email'];
 if (!empty($username) || !empty($password) || !empty($email)) {
-	$host = "https://195.210.46.100";
+	$host = "https://srv-pleskdb23.ps.kz";
 	$dbUsername = "rahme_login";
-	$dbPassword = "Kazakhstan01";
+	$dbPassword = "nonsmoker123";
 	$dbname = "rahmetm1_login";
 
 	$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
