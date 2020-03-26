@@ -3,7 +3,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $email = $_POST['email'];
 if (!empty($username) || !empty($password) || !empty($email)) {
-	$host = "https://srv-pleskdb23.ps.kz";
+	$host = "srv-pleskdb23.ps.kz";
 	$dbUsername = "rahme_login";
 	$dbPassword = "nonsmoker123";
 	$dbname = "rahmetm1_login";
@@ -26,15 +26,15 @@ if (!empty($username) || !empty($password) || !empty($email)) {
 			$stmt = $conn->prepare($INSERT);
 			$stmt->bind_param("sss", $username, $password, $email);
 			$stmt-> execute();
-			echo "New record inserted succesfully";
+			echo "Вы успешно зарегистрировались";
 		} else {
-			echo "Someone already registered using this username";
+			echo "Пользователь с таким именем уже зарегистрирован, пожалуйста введите другое имя";
 		}
 		$stmt->close();
 		$conn->close();
 	}
 } else {
-	echo "All field are required";
+	echo "Необходимо заполнить все поля";
 	die();
 }
 ?>
