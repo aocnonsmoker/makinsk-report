@@ -8,12 +8,11 @@
     $conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
 
     if (mysqli_connect_error()) {
+        echo "Did not connected"
 		die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
 	} else {
-		$username = $_GET['username'];
-        $email = $_GET['email'];
-
-        echo "Name: $username <br/> Email: $email <br/>"
+        $result = mysqli_query($conn, "SELECT * FROM 'register'")
+        echo "Name: $result['username'] <br/> Email: $result['email'] <br/>"
 		$conn->close();
 	}
 ?>
