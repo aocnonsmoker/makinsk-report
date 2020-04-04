@@ -31,7 +31,7 @@
 
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close">
+        <div class="site-mobile-menu-close mt-3">
           <span class="icon-close2 js-menu-toggle"></span>
         </div>
       </div>
@@ -56,7 +56,7 @@
             </ul>
           </nav>
           <div class="right-cta-menu text-right d-flex aligin-items-right col-6">
-          	<div class="ml-auto">
+            <div class="ml-auto">
             </div>
             <a href="" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
           </div>
@@ -337,7 +337,7 @@
       $(".addLineResource").hide();
       function addResource() {
         $(".addLineResource").show();
-        console.log($("#resources"));
+        console.log(window);
       }
     </script>
    
