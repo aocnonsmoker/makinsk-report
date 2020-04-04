@@ -31,7 +31,7 @@
 
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
+        <div class="site-mobile-menu-close">
           <span class="icon-close2 js-menu-toggle"></span>
         </div>
       </div>
@@ -40,7 +40,7 @@
     
 
     <!-- NAVBAR -->
-    <header class="site-navbar mt-3">
+    <header class="site-navbar">
       <div class="container-fluid">
         <div class="row align-items-center">
           <div class="site-logo col-6"><a href="index.php">Рахмет</a></div>
