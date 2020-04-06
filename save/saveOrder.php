@@ -6,7 +6,7 @@ $telephone = $_POST['telephone'];
 $list = $_POST['list'];
 $amount = $_POST['amount'];
 $priceEach = $_POST['priceEach'];
-$conn = mysqli_connect("127.0.0.1", "root", "", "rahmet");
+$conn = mysqli_connect("srv-pleskdb23.ps.kz", "rahme_login", "nonsmoker123", "rahmetm1_login");
 if (mysqli_connect_error()) {
   die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
 } else {
