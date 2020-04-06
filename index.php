@@ -33,15 +33,13 @@
 
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
+        <div class="site-mobile-menu-close">
           <span class="icon-close2 js-menu-toggle"></span>
         </div>
       </div>
       <div class="site-mobile-menu-body"></div>
     </div> <!-- .site-mobile-menu -->
-    
 
-    <!-- NAVBAR -->
     <header class="site-navbar">
       <div class="container-fluid">
         <div class="row align-items-center">
@@ -104,13 +102,6 @@
 
             
         </div>
-      </div>
-    </section>
-    <section class="text-center">
-      <div>
-        <form action="config.php" method="GET">
-          <input type="submit" value="Submit" />
-        </form>
       </div>
     </section>
     

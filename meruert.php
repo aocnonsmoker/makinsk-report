@@ -72,248 +72,261 @@
       <div class="container">
         <hr>
         <div class="accordion" id="accordionExample">
-  <div class="card resource">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Сырье
-        </button>
-      </h2>
-    </div>
+          <div class="card resource">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  Сырье
+                </button>
+              </h2>
+            </div>
 
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        <table class="table" id="resources">
-          <thead>
-            <tr>
-              <th scope="col">Наименование сырья</th>
-              <th scope="col">В наличии</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            $conn = mysqli_connect("srv-pleskdb23.ps.kz", "rahme_login", "nonsmoker123", "rahmetm1_login");
-            if (mysqli_connect_error()) {
-              die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
-            } else {
-              $sql = "SELECT name, count FROM resources";
-              $result = $conn-> query($sql);
-
-              if ($result-> num_rows > 0) {
-                while ($row = $result-> fetch_assoc()) {
-                  echo "<tr><td>". $row["name"] ."</td><td>". $row["count"] ."</td></tr>";
-                }
-              } else {
-                echo "Нет записей";
-              }
-            }
-            $conn -> close();
-            ?>
-            <tr class="addLineResource">
-              <form action="save/saveResource.php" method="POST">
-                <td>
-                  <input type="text" placeholder="Введите название сырья" name="name" /><br>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <table class="table meruertTab">
+                  <thead>
+                    <tr>
+                      <th scope="col">Наименование сырья</th>
+                      <th scope="col">В наличии</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $conn = mysqli_connect("127.0.0.1", "root", "", "rahmet");
+                    if (mysqli_connect_error()) {
+                      die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
+                    } else {
+                      $sql = "SELECT name, count FROM resources";
+                      $result = $conn-> query($sql);
+                      if ($result-> num_rows > 0) {
+                        while ($row = $result-> fetch_assoc()) {
+                          echo "<tr><td>". $row["name"] ."</td><td>". $row["count"] ."</td></tr>";
+                        }
+                      } else {
+                        echo "Нет записей";
+                      }
+                    }
+                    $conn -> close();
+                    ?>
+                    <tr class="addLineResource">
+                      <form action="save/saveResource.php" method="POST">
+                        <td>
+                          <input type="text" placeholder="Введите название сырья" name="name" /><br>
+                          <button type="submit" class="btn btn-success saveButton" style="margin-top: 10px;">Сохранить</button>
+                        </td>
+                        <td>
+                          <input type="text" placeholder="Введите кол. и ед. измерения" name="count" />
+                        </td>
+                      </form>
+                    </tr>
+                    <tr>
+                      <td>
+                        <button class="btn btn-primary" onclick="addResource()">Добавить запись</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card production">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Готовая продукция
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">01.04.2020</th>
+                      <th scope="col">Наименование продукта</th>
+                      <th scope="col">Количество</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Бедный еврей</td>
+                      <td>4 кг.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Пирог(сметанник)</td>
+                      <td>5 шт.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Пирог(творожный)</td>
+                      <td>7 шт.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Самса</td>
+                      <td>20 шт.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5</th>
+                      <td>Пирожные(бисквит)</td>
+                      <td>30 шт.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card profit">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Доход
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Наименование сырья</th>
+                      <th scope="col">В наличии</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Мука</td>
+                      <td>74 кг.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Сахар</td>
+                      <td>33 кг.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Маргарин</td>
+                      <td>7 кг.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Кунжут</td>
+                      <td>0,5 кг.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5</th>
+                      <td>Масло</td>
+                      <td>9 л.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card order">
+            <div class="card-header" id="headingFour">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Заказы
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+              <div class="card-body">
+                <form class="orderTab" action="save/saveOrder.php" method="POST">
+                  <table class="table meruertTab">
+                    <thead>
+                      <?php
+                      $conn = mysqli_connect("127.0.0.1", "root", "", "rahmet");
+                      if (mysqli_connect_error()) {
+                        die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
+                      } else {
+                        $sql = "SELECT name, telephone, date, product, amount, priceEach FROM orders ORDER BY date";
+                        $result = $conn-> query($sql);
+                        if ($result-> num_rows > 0) {
+                          while ($row = $result-> fetch_assoc()) {
+                            echo "<tr><th>". $row["date"] ."</th><th>". $row["name"] ."</th><th>". $row["telephone"] ."</th></tr>
+                            <tr><td>". " " ."</td><td>". $row["product"] ."</td><td>". $row["amount"] ." x ". $row["priceEach"]. " тг. " ."</td></tr>";
+                          }
+                        } else {
+                          echo "Нет записей";
+                        }
+                      }
+                      $conn -> close();
+                      ?>
+                      <tr>
+                        <th scope="col"><input type="datetime-local" name="date" placeholder="Дата" /></th>
+                        <th scope="col"><input type="text" name="name" placeholder="Имя" /></th>
+                        <th scope="col"><input type="text" name="telephone" placeholder="Телефон" /></th>
+                        <th scope="col">Итого</th>
+                      </tr>
+                    </thead>
+                    <tbody class="orderBody">
+                    </tbody>
+                  </table>
                   <button type="submit" class="btn btn-success saveButton" style="margin-top: 10px;">Сохранить</button>
-                </td>
-                <td>
-                  <input type="text" placeholder="Введите кол. и ед. измерения" name="count" />
-                </td>
-              </form>
-            </tr>
-            <tr>
-              <td>
-                <button class="btn btn-primary" onclick="addResource()">Добавить запись</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="card production">
-    <div class="card-header" id="headingTwo">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Готовая продукция
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">01.04.2020</th>
-              <th scope="col">Наименование продукта</th>
-              <th scope="col">Количество</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Бедный еврей</td>
-              <td>4 кг.</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Пирог(сметанник)</td>
-              <td>5 шт.</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Пирог(творожный)</td>
-              <td>7 шт.</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Самса</td>
-              <td>20 шт.</td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>Пирожные(бисквит)</td>
-              <td>30 шт.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="card profit">
-    <div class="card-header" id="headingThree">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Доход
-        </button>
-      </h2>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Наименование сырья</th>
-              <th scope="col">В наличии</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Мука</td>
-              <td>74 кг.</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Сахар</td>
-              <td>33 кг.</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Маргарин</td>
-              <td>7 кг.</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Кунжут</td>
-              <td>0,5 кг.</td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>Масло</td>
-              <td>9 л.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="card order">
-    <div class="card-header" id="headingFour">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Заказы
-        </button>
-      </h2>
-    </div>
-    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-      <div class="card-body">
-        <ol>
-          <li>
-            Самат, +77015486415, 03.04.2020 15:30
-            <ul>
-              <li>Баурсак, 6 кг. х 800 тг. = 4800 тг.</li>
-              <li>Торт(медовый), 2 кг. х 3000 тг. = 6000 тг.</li>
-              <li>Пирожное(бисквит), 20 шт. х 140 тг. = 2800 тг.</li>
-              <li>Итог: 13600 тг.</li>
-            </ul>
-          </li>
-          <li>
-            Самат, +77015486415, 03.04.2020 15:30
-            <ul>
-              <li>Баурсак, 6 кг. х 800 тг. = 4800 тг.</li>
-              <li>Торт(медовый), 2 кг. х 3000 тг. = 6000 тг.</li>
-              <li>Пирожное(бисквит), 20 шт. х 140 тг. = 2800 тг.</li>
-              <li>Итог: 13600 тг.</li>
-            </ul>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </div>
-  <div class="card salary">
-    <div class="card-header" id="headingFive">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Зарплаты
-        </button>
-      </h2>
-    </div>
-    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-      <div class="card-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Наименование сырья</th>
-              <th scope="col">В наличии</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Мука</td>
-              <td>74 кг.</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Сахар</td>
-              <td>33 кг.</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Маргарин</td>
-              <td>7 кг.</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Кунжут</td>
-              <td>0,5 кг.</td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>Масло</td>
-              <td>9 л.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+                </form>
+                <button class="btn btn-primary" onclick="addOrder()">Добавить запись</button>
+              </div>
+            </div>
+          </div>
+          <div class="card salary">
+            <div class="card-header" id="headingFive">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  Зарплаты
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Наименование сырья</th>
+                      <th scope="col">В наличии</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Мука</td>
+                      <td>74 кг.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Сахар</td>
+                      <td>33 кг.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Маргарин</td>
+                      <td>7 кг.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Кунжут</td>
+                      <td>0,5 кг.</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5</th>
+                      <td>Масло</td>
+                      <td>9 л.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-  
+
   </div>
 
     <!-- SCRIPTS -->
@@ -335,9 +348,42 @@
     <script src="js/custom.js"></script>
     <script type="text/javascript">
       $(".addLineResource").hide();
+      $(".orderTab").hide();
+
       function addResource() {
         $(".addLineResource").show();
-        console.log(window);
+      };
+
+      function addOrder() {
+        $(".orderTab").show();
+        var productList = [
+          {
+            "name": "Бедный еврей"
+          },
+          {
+            "name": "Торт(бисквит)"
+          },
+          {
+            "name": "Самса"
+          },
+          {
+            "name": "Баурсак"
+          },
+          {
+            "name": "Красный бархат"
+          }
+        ]; 
+        var ind = $(".orderBody")[0].rows.length + 1;
+        var index = "<tr><th>" + ind + "</th><td>";
+        var datalist = "<input type='text' list='list' name='list'><datalist id='list'>";
+        productList.forEach((product) => {
+          var option = "<option value='" + product.name + "'>";
+          datalist += option;
+        })
+        datalist += "</datalist></td>";
+        var amount = "<td><input type='text' name='amount' style='width: 40px;'/> x <input type='text' name='priceEach' style='width: 60px;'> тг.</td></tr>";
+        var newOrder = index + datalist + amount;
+        $(".orderBody").append(newOrder);
       }
     </script>
    
