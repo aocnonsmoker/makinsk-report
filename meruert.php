@@ -237,27 +237,31 @@
             </div>
             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
               <div class="card-body">
+                <table class="table meruertTab">
+                  <thead>
+                    <?php
+                    $conn = mysqli_connect("srv-pleskdb23.ps.kz", "rahme_login", "nonsmoker123", "rahmetm1_login");
+                    if (mysqli_connect_error()) {
+                      die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
+                    } else {
+                      $sql = "SELECT name, telephone, date, product, amount, priceEach FROM orders ORDER BY date";
+                      $result = $conn-> query($sql);
+                      if ($result-> num_rows > 0) {
+                        while ($row = $result-> fetch_assoc()) {
+                          echo "<tr><th>". $row["date"] ."</th><th>". $row["name"] ."</th><th>". $row["telephone"] ."</th></tr>
+                          <tr><td>". " " ."</td><td>". $row["product"] ."</td><td>". $row["amount"] ." x ". $row["priceEach"]. " тг. " ."</td></tr>";
+                        }
+                      } else {
+                        echo "Нет записей";
+                      }
+                    }
+                    $conn -> close();
+                    ?>
+                  </thead>
+                </table>
                 <form class="orderTab" action="save/saveOrder.php" method="POST">
                   <table class="table meruertTab">
                     <thead>
-                      <?php
-                      $conn = mysqli_connect("srv-pleskdb23.ps.kz", "rahme_login", "nonsmoker123", "rahmetm1_login");
-                      if (mysqli_connect_error()) {
-                        die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
-                      } else {
-                        $sql = "SELECT name, telephone, date, product, amount, priceEach FROM orders ORDER BY date";
-                        $result = $conn-> query($sql);
-                        if ($result-> num_rows > 0) {
-                          while ($row = $result-> fetch_assoc()) {
-                            echo "<tr><th>". $row["date"] ."</th><th>". $row["name"] ."</th><th>". $row["telephone"] ."</th></tr>
-                            <tr><td>". " " ."</td><td>". $row["product"] ."</td><td>". $row["amount"] ." x ". $row["priceEach"]. " тг. " ."</td></tr>";
-                          }
-                        } else {
-                          echo "Нет записей";
-                        }
-                      }
-                      $conn -> close();
-                      ?>
                       <tr>
                         <th scope="col"><input type="datetime-local" name="date" placeholder="Дата" /></th>
                         <th scope="col"><input type="text" name="name" placeholder="Имя" /></th>
